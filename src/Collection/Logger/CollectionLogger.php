@@ -8,12 +8,12 @@
 
 namespace Vain\Operation\Collection\Logger;
 
-use Vain\Logger\VainLoggerInterface;
-use Vain\Operation\Collection\VainOperationCollectionInterface;
-use Vain\Operation\VainOperationInterface;
-use Vain\Operation\Result\VainOperationResultInterface;
+use Vain\Logger\LoggerInterface;
+use Vain\Operation\Collection\CollectionInterface;
+use Vain\Operation\OperationInterface;
+use Vain\Operation\Result\OperationResultInterface;
 
-class VainOperationCollectionLogger implements VainOperationCollectionLoggerInterface
+class CollectionLogger implements CollectionLoggerInterface
 {
     const BEFORE_EXECUTION_MESSAGE = 'Ready to execute collection %s with id %s';
     const SUCCESSFUL_EXECUTION_MESSAGE = 'Successfully executed collection %s with id %s';
@@ -24,9 +24,9 @@ class VainOperationCollectionLogger implements VainOperationCollectionLoggerInte
 
     /**
      * VainOperationCollectionLogger constructor.
-     * @param VainLoggerInterface $logger
+     * @param LoggerInterface $logger
      */
-    public function __construct(VainLoggerInterface $logger)
+    public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
     }
@@ -34,7 +34,7 @@ class VainOperationCollectionLogger implements VainOperationCollectionLoggerInte
     /**
      * @inheritDoc
      */
-    public function beforeExecution(VainOperationCollectionInterface $collection)
+    public function beforeExecution(CollectionInterface $collection)
     {
         $this->logger->debug(sprintf(self::BEFORE_EXECUTION_MESSAGE, $collection->getId()));
 
@@ -45,11 +45,11 @@ class VainOperationCollectionLogger implements VainOperationCollectionLoggerInte
      * @inheritDoc
      */
     public function afterExecution(
-        VainOperationCollectionInterface $collection,
-        VainOperationResultInterface $vainOperationResult
+        CollectionInterface $collection,
+        OperationResultInterface $vainOperationResult
     ) {
         if (false === $vainOperationResult->getStatus()) {
-            $this->logger->info(sprintf(self::FAILED_EXECUTION_MESSAGE, get_class($collection), $collection->getId()));
+            $this->logger->debug(sprintf(self::FAILED_EXECUTION_MESSAGE, get_class($collection), $collection->getId()));
         } else {
             $this->logger->debug(sprintf(self::SUCCESSFUL_EXECUTION_MESSAGE, get_class($collection),
                 $collection->getId()));
@@ -61,7 +61,7 @@ class VainOperationCollectionLogger implements VainOperationCollectionLoggerInte
     /**
      * @inheritDoc
      */
-    public function addOperation(VainOperationInterface $operation, VainOperationCollectionInterface $collection)
+    public function addOperation(OperationInterface $operation, CollectionInterface $collection)
     {
         $this->logger->debug(sprintf(self::ADD_OPERATION_MESSAGE, get_class($operation), $operation->getId(),
             get_class($collection), $collection->getId()));

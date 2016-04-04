@@ -8,21 +8,20 @@
 
 namespace Vain\Operation\Collection\Decorator\Transaction;
 
+use Vain\Database\DatabaseInterface;
+use Vain\Operation\Collection\Decorator\AbstractCollectionDecorator;
+use Vain\Operation\Collection\CollectionInterface;
 
-use Vain\Database\VainDatabaseInterface;
-use Vain\Operation\Collection\Decorator\AbstractVainOperationCollectionDecorator;
-use Vain\Operation\Collection\VainOperationCollectionInterface;
-
-class VainOperationCollectionTransactionDecorator extends AbstractVainOperationCollectionDecorator
+class TransactionCollectionDecorator extends AbstractCollectionDecorator
 {
     private $database;
 
     /**
      * VainOperationCollectionTransactionDecorator constructor.
-     * @param VainDatabaseInterface $database
-     * @param VainOperationCollectionInterface $collection
+     * @param DatabaseInterface $database
+     * @param CollectionInterface $collection
      */
-    public function __construct(VainDatabaseInterface $database, VainOperationCollectionInterface $collection)
+    public function __construct(DatabaseInterface $database, CollectionInterface $collection)
     {
         $this->database = $database;
         parent::__construct($collection);

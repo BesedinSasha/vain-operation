@@ -8,18 +8,18 @@
 
 namespace Vain\Operation\Collection\Decorator;
 
-use Vain\Operation\Collection\VainOperationCollectionInterface;
-use Vain\Operation\VainOperationInterface;
+use Vain\Operation\Collection\CollectionInterface;
+use Vain\Operation\OperationInterface;
 
-class AbstractVainOperationCollectionDecorator implements VainOperationCollectionInterface
+class AbstractCollectionDecorator implements CollectionInterface
 {
     private $collection;
 
     /**
      * AbstractVainOperationCollectionDecorator constructor.
-     * @param VainOperationCollectionInterface $collection
+     * @param CollectionInterface $collection
      */
-    public function __construct(VainOperationCollectionInterface $collection)
+    public function __construct(CollectionInterface $collection)
     {
         $this->collection = $collection;
     }
@@ -27,7 +27,7 @@ class AbstractVainOperationCollectionDecorator implements VainOperationCollectio
     /**
      * @inheritDoc
      */
-    public function add(VainOperationInterface $operation)
+    public function add(OperationInterface $operation)
     {
         return $this->collection->add($operation);
     }

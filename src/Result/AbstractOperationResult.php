@@ -9,7 +9,7 @@
 namespace Vain\Operation\Result;
 
 
-abstract class AbstractVainOperationResult implements VainOperationResultInterface
+abstract class AbstractOperationResult implements OperationResultInterface
 {
     private $status;
     

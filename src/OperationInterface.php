@@ -8,9 +8,9 @@
 
 namespace Vain\Operation;
 
-use Vain\Operation\Result\VainOperationResultInterface;
+use Vain\Operation\Result\OperationResultInterface;
 
-interface VainOperationInterface
+interface OperationInterface
 {
     /**
      * @return string
@@ -18,7 +18,7 @@ interface VainOperationInterface
     public function getId();
     
     /**
-     * @return VainOperationResultInterface
+     * @return OperationResultInterface
      */
     public function execute();
 }

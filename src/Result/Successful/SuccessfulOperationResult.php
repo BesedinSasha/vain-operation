@@ -9,9 +9,9 @@
 namespace Vain\Operation\Result\Successful;
 
 
-use Vain\Operation\Result\AbstractVainOperationResult;
+use Vain\Operation\Result\AbstractOperationResult;
 
-class VainSuccessfulOperationResult extends AbstractVainOperationResult
+class SuccessfulOperationResult extends AbstractOperationResult
 {
     public function __construct()
     {

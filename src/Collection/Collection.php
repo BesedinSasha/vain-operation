@@ -9,23 +9,23 @@
 namespace Vain\Operation\Collection;
 
 
-use Vain\Operation\Result\Successful\VainSuccessfulOperationResult;
-use Vain\Operation\VainOperationInterface;
+use Vain\Operation\Result\Successful\SuccessfulOperationResult;
+use Vain\Operation\OperationInterface;
 
-class VainOperationCollection implements VainOperationCollectionInterface
+class Collection implements CollectionInterface
 {
     
     private $id;
 
     /**
-     * @var VainOperationInterface[]
+     * @var OperationInterface[]
      */
     private $operations;
 
     /**
      * AbstractVainOperationCollection constructor.
      * @param string $id
-     * @param VainOperationInterface[] $operations
+     * @param OperationInterface[] $operations
      */
     public function __construct($id, array $operations = [])
     {
@@ -38,7 +38,7 @@ class VainOperationCollection implements VainOperationCollectionInterface
     /**
      * @inheritDoc
      */
-    public function add(VainOperationInterface $operation)
+    public function add(OperationInterface $operation)
     {
         $this->operations[] = $operation;
         
@@ -54,7 +54,7 @@ class VainOperationCollection implements VainOperationCollectionInterface
     }
 
     /**
-     * @return VainOperationInterface[]
+     * @return OperationInterface[]
      */
     public function getOperations()
     {
@@ -66,7 +66,7 @@ class VainOperationCollection implements VainOperationCollectionInterface
      */
     public function execute()
     {
-        $result = new VainSuccessfulOperationResult();
+        $result = new SuccessfulOperationResult();
 
         foreach ($this->operations as $operation) {
             $result = $operation->execute();

@@ -8,22 +8,21 @@
 
 namespace Vain\Operation\Decorator\Logger;
 
+use Vain\Operation\Decorator\AbstractOperationDecorator;
+use Vain\Operation\Logger\OperationLoggerInterface;
+use Vain\Operation\OperationInterface;
 
-use Vain\Operation\Decorator\AbstractVainOperationDecorator;
-use Vain\Operation\Logger\VainOperationLoggerInterface;
-use Vain\Operation\VainOperationInterface;
-
-class VainOperationLoggerDecorator extends AbstractVainOperationDecorator
+class LoggerOperationDecorator extends AbstractOperationDecorator
 {
     
     private $logger;
 
     /**
      * AbstractVainOperationLoggerDecorator constructor.
-     * @param VainOperationLoggerInterface $logger
-     * @param VainOperationInterface $operation
+     * @param OperationLoggerInterface $logger
+     * @param OperationInterface $operation
      */
-    public function __construct(VainOperationLoggerInterface $logger, VainOperationInterface $operation)
+    public function __construct(OperationLoggerInterface $logger, OperationInterface $operation)
     {
         $this->logger = $logger;
         parent::__construct($operation);

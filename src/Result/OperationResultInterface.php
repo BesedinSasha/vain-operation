@@ -9,7 +9,7 @@
 namespace Vain\Operation\Result;
 
 
-interface VainOperationResultInterface
+interface OperationResultInterface
 {
     /**
      * @return bool

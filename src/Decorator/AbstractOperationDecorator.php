@@ -8,23 +8,23 @@
 
 namespace Vain\Operation\Decorator;
 
-use Vain\Operation\VainOperationInterface;
+use Vain\Operation\OperationInterface;
 
-abstract class AbstractVainOperationDecorator implements VainOperationInterface
+abstract class AbstractOperationDecorator implements OperationInterface
 {
     private $operation;
 
     /**
      * AbstractVainOperationDecorator constructor.
-     * @param VainOperationInterface $operation
+     * @param OperationInterface $operation
      */
-    public function __construct(VainOperationInterface $operation)
+    public function __construct(OperationInterface $operation)
     {
         $this->operation = $operation;
     }
 
     /**
-     * @return VainOperationInterface
+     * @return OperationInterface
      */
     public function getOperation()
     {

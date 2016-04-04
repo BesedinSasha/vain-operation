@@ -9,22 +9,22 @@
 namespace Vain\Operation\Collection\Decorator\Logger;
 
 
-use Vain\Operation\Collection\Decorator\AbstractVainOperationCollectionDecorator;
-use Vain\Operation\Collection\Logger\VainOperationCollectionLoggerInterface;
-use Vain\Operation\Collection\VainOperationCollectionInterface;
-use Vain\Operation\VainOperationInterface;
+use Vain\Operation\Collection\Decorator\AbstractCollectionDecorator;
+use Vain\Operation\Collection\Logger\CollectionLoggerInterface;
+use Vain\Operation\Collection\CollectionInterface;
+use Vain\Operation\OperationInterface;
 
-class VainOperationCollectionLoggerDecorator extends AbstractVainOperationCollectionDecorator
+class LoggerCollectionDecorator extends AbstractCollectionDecorator
 {
     
     private $logger;
 
     /**
      * VainOperationCollectionLoggerDecorator constructor.
-     * @param VainOperationCollectionLoggerInterface $logger
-     * @param VainOperationCollectionInterface $collection
+     * @param CollectionLoggerInterface $logger
+     * @param CollectionInterface $collection
      */
-    public function __construct(VainOperationCollectionLoggerInterface $logger, VainOperationCollectionInterface $collection)
+    public function __construct(CollectionLoggerInterface $logger, CollectionInterface $collection)
     {
         $this->logger = $logger;
         parent::__construct($collection);
@@ -33,7 +33,7 @@ class VainOperationCollectionLoggerDecorator extends AbstractVainOperationCollec
     /**
      * @inheritDoc
      */
-    public function add(VainOperationInterface $operation)
+    public function add(OperationInterface $operation)
     {
         $this->logger->addOperation($operation, $this);
         

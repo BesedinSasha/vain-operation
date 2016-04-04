@@ -8,27 +8,28 @@
 
 namespace Vain\Operation\Exception;
 
-use Vain\Core\Exception\VainCoreException;
-use Vain\Operation\VainOperationInterface;
+use Vain\Core\Exception\CoreException;
+use Vain\Operation\OperationInterface;
 
-class VainOperationException extends VainCoreException
+class OperationException extends CoreException
 {
     private $operation;
 
     /**
      * VainOperationException constructor.
-     * @param VainOperationInterface $operation
+     * @param OperationInterface $operation
      * @param string $message
      * @param int $code
+     * @param \Exception $previous
      */
-    public function __construct(VainOperationInterface $operation, $message, $code)
+    public function __construct(OperationInterface $operation, $message, $code, \Exception $previous)
     {
         $this->operation = $operation;
-        parent::__construct($message, $code);
+        parent::__construct($message, $code, $previous);
     }
 
     /**
-     * @return VainOperationInterface
+     * @return OperationInterface
      */
     public function getOperation()
     {
