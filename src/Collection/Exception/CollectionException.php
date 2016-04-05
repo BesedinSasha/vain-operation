@@ -22,7 +22,7 @@ class CollectionException extends OperationException
      * @param int $code
      * @param \Exception $previous
      */
-    public function __construct(CollectionInterface $collection, $message, $code, \Exception $previous)
+    public function __construct(CollectionInterface $collection, $message, $code, \Exception $previous = null)
     {
         $this->collection = $collection;
         parent::__construct($collection, $message, $code, $previous);
